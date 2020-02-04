@@ -13,7 +13,7 @@ int main(int argc, char *argv[])
 
   for (i=0; i<NUM_SOCK; i++)
   {
-    sock_fds[i] = socket(AF_INET, SOCK_STREAM|SOCK_NONBLOCK, 0);
+    sock_fds[i] = socket(AF_INET6, SOCK_STREAM|SOCK_NONBLOCK, 0);
     if (sock_fds[i] == -1)
     {
       printf("Could not create socket %i\n", i);
