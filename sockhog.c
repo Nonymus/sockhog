@@ -1,5 +1,6 @@
 #include<stdio.h>
 #include<sys/socket.h>
+#include<netinet/in.h>
 #include<arpa/inet.h>
 #define NUM_SOCK 2000
 
@@ -25,10 +26,7 @@ int main(int argc, char *argv[])
   // Boilerplate. Connect to localhost port 5000
   serv_addr.sin_family = AF_INET;
   serv_addr.sin_port = htons(5000);
-  if (inet_pton(AF_INET, "127.0.0.1", &serv_addr.sin_addr) <= 0)
-  {
-    printf("Address conversion failed");
-  }
+  serv_addr.sin_addr.s_addr = inet_addr("127.0.0.1");
 
   for (i=0; i<NUM_SOCK; i++)
   {
